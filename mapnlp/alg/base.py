@@ -40,6 +40,9 @@ class AlgorithmFactory():
 
     @classmethod
     def create(cls, name: str, config: Optional[Dict[str, Any]] = None) -> Algorithm:
+        if len(cls.NAME2CLASS) == 0:
+            raise RuntimeError("Please register your algorithm")
+
         alg_class = cls.NAME2CLASS.get(name, None)
         if alg_class is None:
             raise ValueError("Invalid algorithm name: {}\nPlease select from here: {}"

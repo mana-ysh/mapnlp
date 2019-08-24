@@ -6,5 +6,5 @@ from mapnlp.pipe.base import NLPPipe
 
 class ChunkerPipe(NLPPipe):
     DEFAULT_ANNOTATION_EXTRACTOR = MorphSequenceExtractor()
-    DEFAULT_ALGORITHM_NAME = "independent-rule"
+    DEFAULT_ALGORITHM_NAME = "independent-rule"  # TODO: remove or implement default alg
     ALGORITHM_FACTORY_CLASS = ChunkerFactory
