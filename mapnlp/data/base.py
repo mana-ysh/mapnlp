@@ -82,10 +82,20 @@ class InputText(object):
         self.original_text = original_text
         self._annotations = {}
         self._alg_name2ann_ids = defaultdict(lambda: [])
+        self._last_ann_id = None
 
     def annotate(self, ann_id: str, alg_name: str, ann: Annotation):
         self._annotations[ann_id] = ann
         self._alg_name2ann_ids[alg_name].append(ann_id)
+        self._last_ann_id = ann_id
+
+    def get_last(self) -> Annotation:
+        """
+        get final analyzed annotation
+        """
+        if self._last_ann_id is None:
+            raise AttributeError("Don't have any annotation now")
+        return self._annotations[self._last_ann_id]
 
     def get_last_alg(self, alg_name: str):
         """
