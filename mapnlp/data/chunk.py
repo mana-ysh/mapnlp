@@ -9,5 +9,4 @@ class Chunk(SpanTextUnit):
     def __init__(self, morphs: List['Morpheme']):
         surface = "".join([m.surface for m in morphs])
         span = (morphs[0].start, morphs[-1].end)
-        super(Chunk, self).__init__(surface=surface, span=span)
-        self._morphs = morphs
+        super(Chunk, self).__init__(surface=surface, span=span, child_units=morphs)

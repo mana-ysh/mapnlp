@@ -57,11 +57,15 @@ class SpanTextUnit(GraphNode):
 
     # as default
     def dump_as_dict(self):
-        return {
+        d = {
             "surface": self.surface,
             "start": self.start,
             "end": self.end
         }
+
+        if (self._children is not None) and (len(self._children) > 0):
+            d["children"] = [child.dump_as_dict() for child in self._children]
+        return d
 
 
 class IdentifiedTextUnit(GraphNode):
