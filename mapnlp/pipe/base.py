@@ -33,7 +33,7 @@ class NLPPipe(PipeBase):
     def process(self, input_text: InputText):
         _input = self._ann_extractor.extract(input_text)
         output = self._alg.run(_input)
-        self._alg.annotate_to_input_text(input_text, output)
+        self._alg.annotate_to_input_text(self._id, input_text, output)
 
     @classmethod
     def build(cls, _id: str, alg_config: Dict[str, Any] = None, ann_extractor_config: Dict[str, Any] = None):
