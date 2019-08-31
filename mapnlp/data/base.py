@@ -104,9 +104,12 @@ class InputText(object):
         ann_id = self._alg_name2ann_ids[alg_name][-1]
         return self._annotations[ann_id]
 
-    def dumps(self):
+    def dump_as_dict(self):
         # TODO
         d = {"original_text": self.original_text}
         for k in self._annotations.keys():
             d[k] = json.loads(self._annotations[k].dumps())
-        return json.dumps(d)
+        return d
+
+    def dumps(self):
+        return json.dumps(self.dump_as_dict())
