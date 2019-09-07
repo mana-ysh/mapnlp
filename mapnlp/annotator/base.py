@@ -1,7 +1,7 @@
-from typing import Any, Union
+from typing import Any, Union, List
 
 from mapnlp.alg.base import Algorithm
-from mapnlp.annotation.base import Annotation
+from mapnlp.annotation.base import Annotation, SeriesAnnotation
 from mapnlp.data.base import InputText
 
 
@@ -17,6 +17,13 @@ class Annotator(object):
     # NOTE: self is not Union, but Intersection
     def annotate_to_input_text(self: Union['Algorithm', 'Annotator'], ann_id: str, input_text: InputText, alg_output: Any):
         ann = self._convert_alg_output(alg_output)
+        input_text.annotate(ann_id, self.TASK_NAME, ann)
+
+    # for annotating via series wrap pipe
+    def annotate_series_to_input_text(self: Union['Algorithm', 'Annotator'], ann_id: str,
+                                      input_text: InputText, alg_outputs: List[Any]):
+        ann_list = [self._convert_alg_output(out) for out in alg_outputs]
+        ann = SeriesAnnotation(ann_list)
         input_text.annotate(ann_id, self.TASK_NAME, ann)
 
 

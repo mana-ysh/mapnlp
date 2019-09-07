@@ -1,6 +1,6 @@
 
 import json
-from typing import Generic, TypeVar, Optional, Dict, Any, Iterable
+from typing import Generic, TypeVar, Optional, Dict, Any, Iterable, List
 
 
 T = TypeVar('T')
@@ -28,6 +28,17 @@ class SequentialAnnotation(Annotation, Generic[T]):
 
     def dumps(self):
         key = "sequential"
+        d = {key: [json.loads(inner_content.dumps()) for inner_content in self.get(key)]}
+        return json.dumps(d)
+
+
+class SeriesAnnotation(Annotation):
+    def __init__(self, ann_list: List[Annotation]):
+        content = {"series": ann_list}
+        super(SeriesAnnotation, self).__init__(content)
+
+    def dumps(self):
+        key = "series"
         d = {key: [json.loads(inner_content.dumps()) for inner_content in self.get(key)]}
         return json.dumps(d)
 

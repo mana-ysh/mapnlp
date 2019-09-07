@@ -4,6 +4,7 @@ from mapnlp.annotator.base import Annotator
 from mapnlp.annotation.base import SequentialAnnotation
 from mapnlp.data.chunk import Chunk
 from mapnlp.data.morpheme import Morpheme
+from mapnlp.data.sentence import Sentence
 
 
 class SequentialAnnotator(Annotator):
@@ -21,3 +22,7 @@ class MorphemeSequentialAnnotator(SequentialAnnotator):
 
 class ChunkSequentialAnnotator(SequentialAnnotator):
     TYPE = Chunk
+
+
+class SentenceSequentialAnnotator(SequentialAnnotator):
+    TYPE = Sentence

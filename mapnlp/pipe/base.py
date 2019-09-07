@@ -26,6 +26,12 @@ class NLPPipe(PipeBase):
         self._alg = alg
         self._ann_extractor = ann_extractor
 
+    def get_alg(self) -> Union['Algorithm', 'Annotator']:
+        return self._alg
+
+    def get_ann_extractor(self) -> AnnotationExtractor:
+        return self._ann_extractor
+
     @property
     def id(self):
         return self._id

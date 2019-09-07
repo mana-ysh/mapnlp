@@ -6,6 +6,7 @@ from typing import List, Tuple, Optional, Dict, Any
 from mapnlp.annotation.base import Annotation
 
 
+# FIXME: inefficient graph connection
 class GraphNode():
     def __init__(self,
                  name: str,
@@ -20,6 +21,9 @@ class GraphNode():
 
     def get_parent(self) -> Optional[List['GraphNode']]:
         return self._parent
+
+    def set_children(self, children):
+        self._children = children
 
     def set_parent(self, parent):
         self._parent = parent
