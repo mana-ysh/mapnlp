@@ -44,7 +44,7 @@ class SpanTextUnit(GraphNode):
                  span: Tuple[int, int],
                  child_units: Optional[List['TreeNode']] = None,
                  parent_units: Optional[List['TreeNode']] = None,
-                 info: Optional[Dict[str, Any]] = None
+                 attributes: Optional[Dict[str, Any]] = None
                  ):
         # FIXME: tempolary name
         _name = str(uuid.uuid4())
@@ -54,7 +54,7 @@ class SpanTextUnit(GraphNode):
         self.surface = surface
         self.start = span[0]
         self.end = span[1]
-        self.info = info
+        self.attributes = attributes
 
     def dumps(self):
         return json.dumps(self.dump_as_dict())
@@ -69,6 +69,9 @@ class SpanTextUnit(GraphNode):
 
         if (self._children is not None) and (len(self._children) > 0):
             d["children"] = [child.dump_as_dict() for child in self._children]
+
+        if (self.attributes is not None) and (len(self.attributes) > 0):
+            d["attributes"] = self.attributes
         return d
 
 

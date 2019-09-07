@@ -3,6 +3,7 @@ from typing import Iterable
 from mapnlp.annotator.base import Annotator
 from mapnlp.annotation.base import SequentialAnnotation
 from mapnlp.data.chunk import Chunk
+from mapnlp.data.dep_edge import DependencyEdge
 from mapnlp.data.morpheme import Morpheme
 from mapnlp.data.sentence import Sentence
 
@@ -26,3 +27,7 @@ class ChunkSequentialAnnotator(SequentialAnnotator):
 
 class SentenceSequentialAnnotator(SequentialAnnotator):
     TYPE = Sentence
+
+
+class DependencyLabelSequentialAnnotator(SequentialAnnotator):
+    TYPE = DependencyEdge
