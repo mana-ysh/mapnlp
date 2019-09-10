@@ -49,5 +49,11 @@ class LabelAnnotation(Annotation):
         super(LabelAnnotation, self).__init__(content)
 
 
+class TextAnnotation(Annotation):
+    def __init__(self, text: str):
+        content = {"text": text}
+        super(TextAnnotation, self).__init__(content)
+
+
 def build() -> SequentialAnnotation[int]:
     return SequentialAnnotation()
