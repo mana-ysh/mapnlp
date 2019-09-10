@@ -8,7 +8,7 @@ from mapnlp.data.morpheme import Morpheme
 @TextSummarizer.registry
 class LeadSummarizer(TextSummarizer):
     """
-    All units except the last one are modifier
+    just pick up head sentences
     """
     ALGORITHM_NAME = "lead"
 
