@@ -1,2 +1,3 @@
 
 from mapnlp.alg.sentence_splitter.base import SentenceSplitter, SentenceSplitterFactory
+from mapnlp.alg.sentence_splitter.line_splitter import LineSentenceSplitter
