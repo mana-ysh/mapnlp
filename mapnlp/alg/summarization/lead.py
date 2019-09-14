@@ -22,4 +22,5 @@ class LeadSummarizer(TextSummarizer):
 
     @classmethod
     def build(cls, config: Dict[str, Any]):
-        return cls()
+        n_head = config.get("n_head", 2)
+        return cls(n_head)
